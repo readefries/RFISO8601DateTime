@@ -7,7 +7,12 @@
 
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+Using is very easy, to parse an RFC3339 date/time string, just do the following.
+
+```
+let rfc3339DateTime = "1985-04-12T23:20:50.52Z"
+let parsedDateTime = NSDate.parseDateString(rfc3339DateTime)
+```
 
 ## Requirements
 
