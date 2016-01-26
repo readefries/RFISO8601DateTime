@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension NSDate {
+public extension NSDate {
 
     public static func parseDateString(var dateTimeString: String) -> NSDate! {
         

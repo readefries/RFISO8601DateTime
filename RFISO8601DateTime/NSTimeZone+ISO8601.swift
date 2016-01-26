@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension NSTimeZone {
+public extension NSTimeZone {
     // Time zone designator e.g., Z, +01 or +01:00
     public static func timeZoneWithString(dateString: String) -> NSTimeZone! {
         

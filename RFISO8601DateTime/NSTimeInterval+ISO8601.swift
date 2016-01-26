@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension NSTimeInterval {
+public extension NSTimeInterval {
     
     public func parseTimeIntervalString(timeInterval: String) -> NSTimeInterval! {
         
