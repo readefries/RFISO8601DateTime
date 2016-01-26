@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.homepage         = "https://github.com/readefries/RFISO8601DateTime"
   s.license          = 'MIT'
   s.author           = { "Hindrik Bruinsma" => "de@readefries.nl" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/RFISO8601DateTime.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/readefries/RFISO8601DateTime.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/readefries'
 
   s.platform     = :ios, '8.0'
