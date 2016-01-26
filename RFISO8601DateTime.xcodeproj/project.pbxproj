@@ -10,6 +10,15 @@
 		B14A55F11C577C27005201FE /* RFISO8601DateTime.h in Headers */ = {isa = PBXBuildFile; fileRef = B14A55F01C577C27005201FE /* RFISO8601DateTime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B14A55F81C577C27005201FE /* RFISO8601DateTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14A55ED1C577C27005201FE /* RFISO8601DateTime.framework */; };
 		B14A55FD1C577C27005201FE /* RFISO8601DateTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14A55FC1C577C27005201FE /* RFISO8601DateTimeTests.swift */; };
+		B14A560B1C577C67005201FE /* RFISO8601DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14A56071C577C67005201FE /* RFISO8601DateTime.swift */; };
+		B14A560C1C577C67005201FE /* NSTimeZone+ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14A56081C577C67005201FE /* NSTimeZone+ISO8601.swift */; };
+		B14A560D1C577C67005201FE /* NSTimeInterval+ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14A56091C577C67005201FE /* NSTimeInterval+ISO8601.swift */; };
+		B14A560E1C577C67005201FE /* NSDate+ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14A560A1C577C67005201FE /* NSDate+ISO8601.swift */; };
+		B14A56101C577E8C005201FE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B14A560F1C577E8C005201FE /* .gitignore */; };
+		B14A56141C577EE0005201FE /* RFISO8601DateTime.podspec in Resources */ = {isa = PBXBuildFile; fileRef = B14A56111C577EE0005201FE /* RFISO8601DateTime.podspec */; };
+		B14A56151C577EE0005201FE /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = B14A56121C577EE0005201FE /* README.md */; };
+		B14A56161C577EE0005201FE /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B14A56131C577EE0005201FE /* LICENSE */; };
+		B14A56181C577EF8005201FE /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = B14A56171C577EF8005201FE /* .travis.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +38,15 @@
 		B14A55F71C577C27005201FE /* RFISO8601DateTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RFISO8601DateTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B14A55FC1C577C27005201FE /* RFISO8601DateTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFISO8601DateTimeTests.swift; sourceTree = "<group>"; };
 		B14A55FE1C577C27005201FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B14A56071C577C67005201FE /* RFISO8601DateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFISO8601DateTime.swift; sourceTree = "<group>"; };
+		B14A56081C577C67005201FE /* NSTimeZone+ISO8601.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeZone+ISO8601.swift"; sourceTree = "<group>"; };
+		B14A56091C577C67005201FE /* NSTimeInterval+ISO8601.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+ISO8601.swift"; sourceTree = "<group>"; };
+		B14A560A1C577C67005201FE /* NSDate+ISO8601.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+ISO8601.swift"; sourceTree = "<group>"; };
+		B14A560F1C577E8C005201FE /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
+		B14A56111C577EE0005201FE /* RFISO8601DateTime.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RFISO8601DateTime.podspec; sourceTree = "<group>"; };
+		B14A56121C577EE0005201FE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B14A56131C577EE0005201FE /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		B14A56171C577EF8005201FE /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +71,11 @@
 		B14A55E31C577C27005201FE = {
 			isa = PBXGroup;
 			children = (
+				B14A560F1C577E8C005201FE /* .gitignore */,
+				B14A56171C577EF8005201FE /* .travis.yml */,
+				B14A56121C577EE0005201FE /* README.md */,
+				B14A56111C577EE0005201FE /* RFISO8601DateTime.podspec */,
+				B14A56131C577EE0005201FE /* LICENSE */,
 				B14A55EF1C577C27005201FE /* RFISO8601DateTime */,
 				B14A55FB1C577C27005201FE /* RFISO8601DateTimeTests */,
 				B14A55EE1C577C27005201FE /* Products */,
@@ -71,6 +94,10 @@
 		B14A55EF1C577C27005201FE /* RFISO8601DateTime */ = {
 			isa = PBXGroup;
 			children = (
+				B14A56071C577C67005201FE /* RFISO8601DateTime.swift */,
+				B14A56081C577C67005201FE /* NSTimeZone+ISO8601.swift */,
+				B14A56091C577C67005201FE /* NSTimeInterval+ISO8601.swift */,
+				B14A560A1C577C67005201FE /* NSDate+ISO8601.swift */,
 				B14A55F01C577C27005201FE /* RFISO8601DateTime.h */,
 				B14A55F21C577C27005201FE /* Info.plist */,
 			);
@@ -177,6 +204,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B14A56161C577EE0005201FE /* LICENSE in Resources */,
+				B14A56141C577EE0005201FE /* RFISO8601DateTime.podspec in Resources */,
+				B14A56181C577EF8005201FE /* .travis.yml in Resources */,
+				B14A56101C577E8C005201FE /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +225,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B14A560C1C577C67005201FE /* NSTimeZone+ISO8601.swift in Sources */,
+				B14A560D1C577C67005201FE /* NSTimeInterval+ISO8601.swift in Sources */,
+				B14A56151C577EE0005201FE /* README.md in Sources */,
+				B14A560B1C577C67005201FE /* RFISO8601DateTime.swift in Sources */,
+				B14A560E1C577C67005201FE /* NSDate+ISO8601.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +344,7 @@
 		B14A56021C577C27005201FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -318,12 +355,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nl.xs4some.RFISO8601DateTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		B14A56031C577C27005201FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
