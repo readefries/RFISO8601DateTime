@@ -52,6 +52,13 @@ public extension NSDate {
       return combineDateTimeTimezone(date, time: time, timezone: timeZone)
     }
     
+    // RFC2822 Date
+    if let _ = dateTimeString.rangeOfString(ISO8601.DateTimeRFC2822Regexp, options: .RegularExpressionSearch) {
+      ISO8601.dateFormatter.dateFormat = ISO8601.DateTimeRFC2822Format
+      
+      return ISO8601.dateFormatter.dateFromString(dateTimeString)
+    }
+    
     if let range = dateTimeString.rangeOfString(ISO8601.WeekDateRegexp, options: .RegularExpressionSearch) {
       return dateWeekWithSTring(dateTimeString.substringWithRange(range))
     }

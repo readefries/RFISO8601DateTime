@@ -252,4 +252,27 @@ class ISO8601DateTimeTests: XCTestCase {
       XCTAssertTrue(components.timeZone! == NSTimeZone(forSecondsFromGMT: 0), String(format: "The timezone should be GMT, not %@", components.timeZone!))
     }
   }
+  
+  func testRFC2282DateTime() {
+    let dateTime = "Fri, 21 Nov 1997 09:55:06 -0600"
+
+    let parsedDateTime = NSDate.parseDateString(dateTime)
+    
+    XCTAssertNotNil(parsedDateTime, "Date should not be nil")
+    
+    if parsedDateTime != nil {
+      let calendar = NSCalendar.currentCalendar()
+      calendar.timeZone = NSTimeZone(forSecondsFromGMT: (3600 * -6))
+      
+      let components = calendar.components([.Year, .Month, .Day, .Hour, .Minute, .Second, .TimeZone], fromDate: parsedDateTime)
+      
+      XCTAssertTrue(components.year == 1997, String(format: "The year should be 1997, not %d", components.year))
+      XCTAssertTrue(components.month == 11, String(format: "The month should be 11, not %d", components.month))
+      XCTAssertTrue(components.day == 21, String(format: "The day should be 21, not %d", components.day))
+      XCTAssertTrue(components.hour == 9, String(format: "The hour should be 9, not %d", components.hour))
+      XCTAssertTrue(components.minute == 55, String(format: "The minute should be 55, not %d", components.minute))
+      XCTAssertTrue(components.second == 06, String(format: "The seconde should be 06, not %d", components.second))
+      XCTAssertTrue(components.timeZone! == NSTimeZone(forSecondsFromGMT: (3600 * -6)), String(format: "The timezone should -06.00, not %@", components.timeZone!))
+    }
+  }
 }
