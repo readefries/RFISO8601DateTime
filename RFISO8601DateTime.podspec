@@ -8,10 +8,10 @@
 
 Pod::Spec.new do |s|
   s.name             = "RFISO8601DateTime"
-  s.version          = "0.1.2"
+  s.version          = "0.2.2"
   s.summary          = "A library to easily use ISO8601 date and time."
   s.description      = <<-DESC 
-  			A small library that can automatically parse ISO8601/RFC3339 date 
+  			A small library that can automatically parse ISO8601/RFC3339/RFC2822 date
   			and time. It extends NSDate and recognise different date and time formats using regular expression.
   					
                        DESC
