@@ -16,7 +16,6 @@
 		B14A560E1C577C67005201FE /* NSDate+ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14A560A1C577C67005201FE /* NSDate+ISO8601.swift */; };
 		B14A56101C577E8C005201FE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B14A560F1C577E8C005201FE /* .gitignore */; };
 		B14A56141C577EE0005201FE /* RFISO8601DateTime.podspec in Resources */ = {isa = PBXBuildFile; fileRef = B14A56111C577EE0005201FE /* RFISO8601DateTime.podspec */; };
-		B14A56151C577EE0005201FE /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = B14A56121C577EE0005201FE /* README.md */; };
 		B14A56161C577EE0005201FE /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B14A56131C577EE0005201FE /* LICENSE */; };
 		B14A56181C577EF8005201FE /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = B14A56171C577EF8005201FE /* .travis.yml */; };
 /* End PBXBuildFile section */
@@ -227,7 +226,6 @@
 			files = (
 				B14A560C1C577C67005201FE /* NSTimeZone+ISO8601.swift in Sources */,
 				B14A560D1C577C67005201FE /* NSTimeInterval+ISO8601.swift in Sources */,
-				B14A56151C577EE0005201FE /* README.md in Sources */,
 				B14A560B1C577C67005201FE /* RFISO8601DateTime.swift in Sources */,
 				B14A560E1C577C67005201FE /* NSDate+ISO8601.swift in Sources */,
 			);
