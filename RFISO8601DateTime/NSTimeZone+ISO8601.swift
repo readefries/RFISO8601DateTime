@@ -14,14 +14,14 @@ public extension NSTimeZone {
     
     var timeZoneString: String!
     
-    if let rangeOfTimezone = dateString.rangeOfString(ISO8601.TimeZoneDesignatorRegexp, options: .RegularExpressionSearch) {
+    if let rangeOfTimezone = dateString.rangeOfString(ISO8601Constants.TimeZoneDesignatorRegexp, options: .RegularExpressionSearch) {
       timeZoneString = dateString.substringWithRange(rangeOfTimezone)
       
       if timeZoneString == "Z" {
         return NSTimeZone(forSecondsFromGMT: 0)
       }
       
-      if let _ = timeZoneString.rangeOfString(ISO8601.TimeZoneDesignatorRegexp, options: .RegularExpressionSearch) {
+      if let _ = timeZoneString.rangeOfString(ISO8601Constants.TimeZoneDesignatorRegexp, options: .RegularExpressionSearch) {
         timeZoneString = timeZoneString.stringByReplacingOccurrencesOfString(":", withString: "")
         let string = timeZoneString as NSString
         

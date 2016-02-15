@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ISO8601 {
+struct ISO8601Constants {
   
   static let CalendarMonthRegexp = "^([0-9]{4})-(1[0-2]|0[1-9])$"
   static let CalendarMonthFormat = "yyyyMM"

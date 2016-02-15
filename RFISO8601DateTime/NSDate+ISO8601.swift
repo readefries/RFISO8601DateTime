@@ -19,12 +19,12 @@ public extension NSDate {
     // Date and time
     
     // Calendar date with hours, minutes, and seconds (e.g., 2008-08-30 17:21:59 or 20080830 172159).
-    if let _ = dateTimeString.rangeOfString(ISO8601.CalenderDateHoursMinutesSecondsRegexp, options: .RegularExpressionSearch) {
-      if let dateRange = dateTimeString.rangeOfString(ISO8601.CalendarDateRegexp, options: .RegularExpressionSearch) {
+    if let _ = dateTimeString.rangeOfString(ISO8601Constants.CalenderDateHoursMinutesSecondsRegexp, options: .RegularExpressionSearch) {
+      if let dateRange = dateTimeString.rangeOfString(ISO8601Constants.CalendarDateRegexp, options: .RegularExpressionSearch) {
         date = dateWithString(dateTimeString.substringWithRange(dateRange))
       }
       
-      if let timeRange = dateTimeString.rangeOfString(ISO8601.HoursMinutesSecondsRegexp, options: .RegularExpressionSearch) {
+      if let timeRange = dateTimeString.rangeOfString(ISO8601Constants.HoursMinutesSecondsRegexp, options: .RegularExpressionSearch) {
         time = timeWithString(dateTimeString.substringWithRange(timeRange))
       }
       
@@ -32,16 +32,16 @@ public extension NSDate {
     }
     
     // Date and time, with fractional seconds and time zone
-    if let _ = dateTimeString.rangeOfString(ISO8601.DateTimeWithFractionalSecondsAndTimeZoneRegexp, options: .RegularExpressionSearch) {
-      if let dateRange = dateTimeString.rangeOfString(ISO8601.DateWithTimeZoneRegexp, options: .RegularExpressionSearch) {
+    if let _ = dateTimeString.rangeOfString(ISO8601Constants.DateTimeWithFractionalSecondsAndTimeZoneRegexp, options: .RegularExpressionSearch) {
+      if let dateRange = dateTimeString.rangeOfString(ISO8601Constants.DateWithTimeZoneRegexp, options: .RegularExpressionSearch) {
         date = dateWithString(dateTimeString.substringWithRange(dateRange))
       }
       
-      if let timeRange = dateTimeString.rangeOfString(ISO8601.TimeWithFractionalSecondsRegexp, options: .RegularExpressionSearch) {
+      if let timeRange = dateTimeString.rangeOfString(ISO8601Constants.TimeWithFractionalSecondsRegexp, options: .RegularExpressionSearch) {
         time = timeWithString(dateTimeString.substringWithRange(timeRange))
       }
       
-      if let timezoneRange = dateTimeString.rangeOfString(ISO8601.TimeZoneDesignatorRegexp, options: .RegularExpressionSearch) {
+      if let timezoneRange = dateTimeString.rangeOfString(ISO8601Constants.TimeZoneDesignatorRegexp, options: .RegularExpressionSearch) {
         timeZone = NSTimeZone.timeZoneWithString(dateTimeString.substringWithRange(timezoneRange))
       }
       
@@ -53,32 +53,32 @@ public extension NSDate {
     }
     
     // RFC2822 Date
-    if let _ = dateTimeString.rangeOfString(ISO8601.DateTimeRFC2822Regexp, options: .RegularExpressionSearch) {
-      ISO8601.dateFormatter.dateFormat = ISO8601.DateTimeRFC2822Format
+    if let _ = dateTimeString.rangeOfString(ISO8601Constants.DateTimeRFC2822Regexp, options: .RegularExpressionSearch) {
+      ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.DateTimeRFC2822Format
       
-      return ISO8601.dateFormatter.dateFromString(dateTimeString)
+      return ISO8601Constants.dateFormatter.dateFromString(dateTimeString)
     }
     
-    if let range = dateTimeString.rangeOfString(ISO8601.WeekDateRegexp, options: .RegularExpressionSearch) {
+    if let range = dateTimeString.rangeOfString(ISO8601Constants.WeekDateRegexp, options: .RegularExpressionSearch) {
       return dateWeekWithSTring(dateTimeString.substringWithRange(range))
     }
       // Ordinal date e.g. 2016-021
-    else  if let _ = dateTimeString.rangeOfString(ISO8601.OrdinalDateRegexp, options: .RegularExpressionSearch) {
+    else  if let _ = dateTimeString.rangeOfString(ISO8601Constants.OrdinalDateRegexp, options: .RegularExpressionSearch) {
       dateTimeString = dateTimeString.stringByReplacingOccurrencesOfString("-", withString: "")
-      ISO8601.dateFormatter.dateFormat = ISO8601.OrdinalDateFormat
+      ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.OrdinalDateFormat
       
-      return ISO8601.dateFormatter.dateFromString(dateTimeString)
+      return ISO8601Constants.dateFormatter.dateFromString(dateTimeString)
     }
     
-    if let dateRange = dateTimeString.rangeOfString(ISO8601.DateWithTimeZoneRegexp, options: .RegularExpressionSearch) {
+    if let dateRange = dateTimeString.rangeOfString(ISO8601Constants.DateWithTimeZoneRegexp, options: .RegularExpressionSearch) {
       date = dateWithString(dateTimeString.substringWithRange(dateRange))
     }
     
-    if let range = dateTimeString.rangeOfString(ISO8601.TimeWithFractionalSecondsRegexp, options: .RegularExpressionSearch) {
+    if let range = dateTimeString.rangeOfString(ISO8601Constants.TimeWithFractionalSecondsRegexp, options: .RegularExpressionSearch) {
       time = timeWithString(dateTimeString.substringWithRange(range))
     }
     
-    if let timezoneRange = dateTimeString.rangeOfString(ISO8601.TimeZoneDesignatorRegexp, options: .RegularExpressionSearch) {
+    if let timezoneRange = dateTimeString.rangeOfString(ISO8601Constants.TimeZoneDesignatorRegexp, options: .RegularExpressionSearch) {
       timeZone = NSTimeZone.timeZoneWithString(dateTimeString.substringWithRange(timezoneRange))
     }
     
@@ -156,19 +156,19 @@ public extension NSDate {
   private static func dateWeekWithSTring(var dateWeekString: String) -> NSDate! {
     
     // Week of the year e.g. 2016-W03
-    if let _ = dateWeekString.rangeOfString(ISO8601.WeekOfTheYearRegexp, options: .RegularExpressionSearch) {
+    if let _ = dateWeekString.rangeOfString(ISO8601Constants.WeekOfTheYearRegexp, options: .RegularExpressionSearch) {
       dateWeekString = dateWeekString.stringByReplacingOccurrencesOfString("-", withString: "")
-      ISO8601.dateFormatter.dateFormat = ISO8601.WeekOfTheYearFormat
+      ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.WeekOfTheYearFormat
       
-      return ISO8601.dateFormatter.dateFromString(dateWeekString)
+      return ISO8601Constants.dateFormatter.dateFromString(dateWeekString)
     }
     
     // Week date e.g. 2016-W03-6
-    if let _ = dateWeekString.rangeOfString(ISO8601.WeekDateRegexp, options: .RegularExpressionSearch) {
+    if let _ = dateWeekString.rangeOfString(ISO8601Constants.WeekDateRegexp, options: .RegularExpressionSearch) {
       dateWeekString = dateWeekString.stringByReplacingOccurrencesOfString("-", withString: "")
-      ISO8601.dateFormatter.dateFormat = ISO8601.WeekDateFormat
+      ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.WeekDateFormat
       
-      return ISO8601.dateFormatter.dateFromString(dateWeekString)
+      return ISO8601Constants.dateFormatter.dateFromString(dateWeekString)
     }
     
     return nil
@@ -177,19 +177,19 @@ public extension NSDate {
   private static func dateWithString(var dateString: String) -> NSDate! {
     
     // Calender month e.g. 2016-01
-    if let _ = dateString.rangeOfString(ISO8601.CalendarMonthRegexp, options: .RegularExpressionSearch) {
+    if let _ = dateString.rangeOfString(ISO8601Constants.CalendarMonthRegexp, options: .RegularExpressionSearch) {
       dateString = dateString.stringByReplacingOccurrencesOfString("-", withString: "")
-      ISO8601.dateFormatter.dateFormat = ISO8601.CalendarMonthFormat
+      ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.CalendarMonthFormat
       
-      return ISO8601.dateFormatter.dateFromString(dateString)!
+      return ISO8601Constants.dateFormatter.dateFromString(dateString)!
     }
     
     // Calender date e.g. 2016-01-21
-    if let _ = dateString.rangeOfString(ISO8601.CalendarDateRegexp, options: .RegularExpressionSearch) {
+    if let _ = dateString.rangeOfString(ISO8601Constants.CalendarDateRegexp, options: .RegularExpressionSearch) {
       dateString = dateString.stringByReplacingOccurrencesOfString("-", withString: "")
-      ISO8601.dateFormatter.dateFormat = ISO8601.CalendarDateFormat
+      ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.CalendarDateFormat
       
-      return ISO8601.dateFormatter.dateFromString(dateString)!
+      return ISO8601Constants.dateFormatter.dateFromString(dateString)!
     }
     
     return nil
@@ -198,33 +198,33 @@ public extension NSDate {
   private static func timeWithString(var timeString: String) -> NSDate! {
     
     // Hours and minutes e.g. 10:10
-    if let _ = timeString.rangeOfString(ISO8601.HoursMinutesRegexp, options: .RegularExpressionSearch) {
+    if let _ = timeString.rangeOfString(ISO8601Constants.HoursMinutesRegexp, options: .RegularExpressionSearch) {
       timeString = timeString.stringByReplacingOccurrencesOfString(":", withString: "")
-      ISO8601.dateFormatter.dateFormat = ISO8601.HoursMinutesFormat
+      ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.HoursMinutesFormat
       
-      return ISO8601.dateFormatter.dateFromString(timeString)!
+      return ISO8601Constants.dateFormatter.dateFromString(timeString)!
     }
     
     // Hours and minutes e.g. 10:10:34
-    if let _ = timeString.rangeOfString(ISO8601.HoursMinutesSecondsRegexp, options: .RegularExpressionSearch) {
+    if let _ = timeString.rangeOfString(ISO8601Constants.HoursMinutesSecondsRegexp, options: .RegularExpressionSearch) {
       timeString = timeString.stringByReplacingOccurrencesOfString(":", withString: "")
-      ISO8601.dateFormatter.dateFormat = ISO8601.HoursMinutesSecondsFormat
+      ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.HoursMinutesSecondsFormat
       
-      return ISO8601.dateFormatter.dateFromString(timeString)!
+      return ISO8601Constants.dateFormatter.dateFromString(timeString)!
     }
     
     // Time, with fractional seconds (e.g. 01:45:36.123).
-    if let _ = timeString.rangeOfString(ISO8601.TimeWithFractionalSecondsRegexp, options: .RegularExpressionSearch) {
-      ISO8601.dateFormatter.dateFormat = ISO8601.TimeWithFractionalSecondsFormat
+    if let _ = timeString.rangeOfString(ISO8601Constants.TimeWithFractionalSecondsRegexp, options: .RegularExpressionSearch) {
+      ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.TimeWithFractionalSecondsFormat
       
-      return ISO8601.dateFormatter.dateFromString(timeString)!
+      return ISO8601Constants.dateFormatter.dateFromString(timeString)!
     }
     
     // Time, with fractional seconds and time zone (e.g. 01:45:36.123+07:00).
-    if let _ = timeString.rangeOfString(ISO8601.TimeWithFractionalSecondsAndTimeZoneRegexp, options: .RegularExpressionSearch) {
-      ISO8601.dateFormatter.dateFormat = ISO8601.TimeWithFractionalSecondsAndTimeZoneFormat
+    if let _ = timeString.rangeOfString(ISO8601Constants.TimeWithFractionalSecondsAndTimeZoneRegexp, options: .RegularExpressionSearch) {
+      ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.TimeWithFractionalSecondsAndTimeZoneFormat
       
-      return ISO8601.dateFormatter.dateFromString(timeString)!
+      return ISO8601Constants.dateFormatter.dateFromString(timeString)!
     }
     
     return nil
