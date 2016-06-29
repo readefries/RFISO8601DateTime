@@ -3,7 +3,7 @@ import Foundation
 
 public extension NSDate {
   
-  public static func parseDateString(var dateTimeString: String) -> NSDate! {
+  public static func parseDateString(dateTimeString: String) -> NSDate! {
     
     var date: NSDate! = nil
     var time: NSDate! = nil
@@ -57,10 +57,10 @@ public extension NSDate {
     }
       // Ordinal date e.g. 2016-021
     else  if let _ = dateTimeString.rangeOfString(ISO8601Constants.OrdinalDateRegexp, options: .RegularExpressionSearch) {
-      dateTimeString = dateTimeString.stringByReplacingOccurrencesOfString("-", withString: "")
+      let dateTimeStringWithoutDashes = dateTimeString.stringByReplacingOccurrencesOfString("-", withString: "")
       ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.OrdinalDateFormat
       
-      return ISO8601Constants.dateFormatter.dateFromString(dateTimeString)
+      return ISO8601Constants.dateFormatter.dateFromString(dateTimeStringWithoutDashes)
     }
     
     if let dateRange = dateTimeString.rangeOfString(ISO8601Constants.DateWithTimeZoneRegexp, options: .RegularExpressionSearch) {
@@ -145,65 +145,65 @@ public extension NSDate {
     
     return calendar.dateFromComponents(mergedComponents)!
   }
-  
-  private static func dateWeekWithSTring(var dateWeekString: String) -> NSDate! {
+
+  private static func dateWeekWithSTring(dateWeekString: String) -> NSDate! {
     
     // Week of the year e.g. 2016-W03
     if let _ = dateWeekString.rangeOfString(ISO8601Constants.WeekOfTheYearRegexp, options: .RegularExpressionSearch) {
-      dateWeekString = dateWeekString.stringByReplacingOccurrencesOfString("-", withString: "")
+      let dateWeekStringWithoutDashes = dateWeekString.stringByReplacingOccurrencesOfString("-", withString: "")
       ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.WeekOfTheYearFormat
       
-      return ISO8601Constants.dateFormatter.dateFromString(dateWeekString)
+      return ISO8601Constants.dateFormatter.dateFromString(dateWeekStringWithoutDashes)
     }
     
     // Week date e.g. 2016-W03-6
     if let _ = dateWeekString.rangeOfString(ISO8601Constants.WeekDateRegexp, options: .RegularExpressionSearch) {
-      dateWeekString = dateWeekString.stringByReplacingOccurrencesOfString("-", withString: "")
+      let dateWeekStringWithoutDashes = dateWeekString.stringByReplacingOccurrencesOfString("-", withString: "")
       ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.WeekDateFormat
       
-      return ISO8601Constants.dateFormatter.dateFromString(dateWeekString)
+      return ISO8601Constants.dateFormatter.dateFromString(dateWeekStringWithoutDashes)
     }
     
     return nil
   }
   
-  private static func dateWithString(var dateString: String) -> NSDate! {
+  private static func dateWithString(dateString: String) -> NSDate! {
     
     // Calender month e.g. 2016-01
     if let _ = dateString.rangeOfString(ISO8601Constants.CalendarMonthRegexp, options: .RegularExpressionSearch) {
-      dateString = dateString.stringByReplacingOccurrencesOfString("-", withString: "")
+      let dateStringWithoutDashes = dateString.stringByReplacingOccurrencesOfString("-", withString: "")
       ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.CalendarMonthFormat
       
-      return ISO8601Constants.dateFormatter.dateFromString(dateString)!
+      return ISO8601Constants.dateFormatter.dateFromString(dateStringWithoutDashes)!
     }
     
     // Calender date e.g. 2016-01-21
     if let _ = dateString.rangeOfString(ISO8601Constants.CalendarDateRegexp, options: .RegularExpressionSearch) {
-      dateString = dateString.stringByReplacingOccurrencesOfString("-", withString: "")
+      let dateStringWithoutDashes = dateString.stringByReplacingOccurrencesOfString("-", withString: "")
       ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.CalendarDateFormat
       
-      return ISO8601Constants.dateFormatter.dateFromString(dateString)!
+      return ISO8601Constants.dateFormatter.dateFromString(dateStringWithoutDashes)!
     }
     
     return nil
   }
   
-  private static func timeWithString(var timeString: String) -> NSDate! {
+  private static func timeWithString(timeString: String) -> NSDate! {
     
     // Hours and minutes e.g. 10:10
     if let _ = timeString.rangeOfString(ISO8601Constants.HoursMinutesRegexp, options: .RegularExpressionSearch) {
-      timeString = timeString.stringByReplacingOccurrencesOfString(":", withString: "")
+      let timeStringWithoutDashes = timeString.stringByReplacingOccurrencesOfString(":", withString: "")
       ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.HoursMinutesFormat
       
-      return ISO8601Constants.dateFormatter.dateFromString(timeString)!
+      return ISO8601Constants.dateFormatter.dateFromString(timeStringWithoutDashes)!
     }
     
     // Hours and minutes e.g. 10:10:34
     if let _ = timeString.rangeOfString(ISO8601Constants.HoursMinutesSecondsRegexp, options: .RegularExpressionSearch) {
-      timeString = timeString.stringByReplacingOccurrencesOfString(":", withString: "")
+      let timeStringWithoutDashes = timeString.stringByReplacingOccurrencesOfString(":", withString: "")
       ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.HoursMinutesSecondsFormat
       
-      return ISO8601Constants.dateFormatter.dateFromString(timeString)!
+      return ISO8601Constants.dateFormatter.dateFromString(timeStringWithoutDashes)!
     }
     
     // Time, with fractional seconds (e.g. 01:45:36.123).
