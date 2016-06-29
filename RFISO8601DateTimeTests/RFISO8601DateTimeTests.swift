@@ -1,14 +1,7 @@
-//
-//  RFISO8601DateTimeTests.swift
-//  RFISO8601DateTimeTests
-//
-//  Created by Hindrik Bruinsma on 21/01/16.
-//  Copyright © 2016 xs4some. All rights reserved.
-//
 
 import XCTest
 
-@testable import RFISO8601DateTime
+import RFISO8601DateTime
 
 class ISO8601DateTimeTests: XCTestCase {
   
