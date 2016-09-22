@@ -1,9 +1,9 @@
 
 import Foundation
 
-public extension NSTimeInterval {
+public extension TimeInterval {
   
-  public func parseTimeIntervalString(timeInterval: String) -> NSTimeInterval! {
+  public func parseTimeIntervalString(_ timeInterval: String) -> TimeInterval! {
     
     NSLog("ERROR: support for time intervals not yet available")
     
