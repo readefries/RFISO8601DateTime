@@ -1,11 +1,6 @@
 language: objective-c
 osx_image: xcode8
 
-before_install:
-- export LANG=en_US.UTF-8
-- brew update
-- if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
-
 script:
-- xctool clean build -project RFISO8601DateTime.xcodeproj -scheme 'RFISO8601DateTime' -sdk iphonesimulator9.2 ONLY_ACTIVE_ARCH=NO
-
+ - xcodebuild test -project RFISO8601DateTime.xcodeproj -scheme RFISO8601DateTimeTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO  -destination 'platform=iOS Simulator,name=iPhone 7' | xcpretty
+ - pod lib lint --quick

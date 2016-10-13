@@ -40,7 +40,11 @@ RFISO8601DateTime is available through [CocoaPods](http://cocoapods.org). To ins
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "RFISO8601DateTime"
+pod 'RFISO8601DateTime', '~> 2.0.0' # Swift 3.0
+```
+
+```ruby
+pod 'RFISO8601DateTime', '~> 1.0.0' # Swift 2.3
 ```
 
 ## Author
