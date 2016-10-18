@@ -4,3 +4,5 @@ osx_image: xcode8
 script:
  - xcodebuild test -project RFISO8601DateTime.xcodeproj -scheme RFISO8601DateTimeTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO  -destination 'platform=iOS Simulator,name=iPhone 7' | xcpretty
  - pod lib lint --quick
+after_success:
+  - bash <(curl -s https://codecov.io/bash) 
