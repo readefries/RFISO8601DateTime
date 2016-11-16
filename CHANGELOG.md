@@ -1,3 +1,7 @@
+# 2.0.2
+
+* Removed a lot of force unwraps, and replaced them with if let/guard lets to prevent possible crashes
+
 # 2.0.1
 
 * Fixed issue which would cause crashes for certain date formats

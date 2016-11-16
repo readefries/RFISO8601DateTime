@@ -2,11 +2,11 @@ import Foundation
 
 public extension Date {
   
-  public static func parseDateString(_ dateTimeString: String) -> Date! {
-    
-    var date: Date! = nil
-    var time: Date! = nil
-    var timeZone: TimeZone! = nil
+  public static func parseDateString(_ dateTimeString: String) -> Date? {
+
+    var date: Date? = nil
+    var time: Date? = nil
+    var timeZone: TimeZone? = nil
     
     // Date and time
 
@@ -36,7 +36,9 @@ public extension Date {
       if let timeRange = dateTimeString.range(of: ISO8601Constants.HoursMinutesSecondsRegexp, options: .regularExpression) {
         time = timeWithString(dateTimeString.substring(with: timeRange))
       }
-      
+
+      guard let date = date, let time = time else { return nil }
+
       return combineDateTime(date, time: time)
     }
 
@@ -62,8 +64,8 @@ public extension Date {
       date = dateWithString(dateTimeString.substring(with: dateRange))
     }
     
-    if let range = dateTimeString.range(of: ISO8601Constants.TimeWithFractionalSecondsRegexp, options: .regularExpression) {
-      time = timeWithString(dateTimeString.substring(with: range))
+    if let timeRange = dateTimeString.range(of: ISO8601Constants.TimeWithFractionalSecondsRegexp, options: .regularExpression) {
+      time = timeWithString(dateTimeString.substring(with: timeRange))
     }
     
     if let timezoneRange = dateTimeString.range(of: ISO8601Constants.TimeZoneDesignatorRegexp, options: .regularExpression) {
@@ -71,17 +73,17 @@ public extension Date {
     }
     
     // Only try to parse week, if now date and time has been found
-    if date == nil && time == nil && timeZone != nil {
+    if date == nil && time == nil, let timeZone = timeZone {
       var calendar = Calendar.current
       calendar.timeZone = timeZone
-      
+
       let timeComponents = DateComponents()
       (timeComponents as NSDateComponents).timeZone = timeZone
       
       return calendar.date(from: timeComponents)
     }
-    else if date != nil && time == nil {
-      if timeZone != nil {
+    else if let date = date, time == nil {
+      if let timeZone = timeZone {
         var calendar = Calendar.current
         calendar.timeZone = TimeZone(secondsFromGMT: 0)!
         
@@ -94,8 +96,8 @@ public extension Date {
         return date
       }
     }
-    else if time != nil && date == nil {
-      if timeZone != nil {
+    else if let time = time, date == nil {
+      if let timeZone = timeZone {
         return combineDateTimeTimezone(date, time: time, timezone: timeZone)
       }
       else {
@@ -107,17 +109,17 @@ public extension Date {
   }
   
   fileprivate static func combineDateTime(_ date: Date, time: Date) -> Date {
-    return combineDateTimeTimezone(date, time: time, timezone: nil);
+    return combineDateTimeTimezone(date, time: time, timezone: nil)
   }
   
-  fileprivate static func combineDateTimeTimezone(_ date: Date!, time: Date!, timezone: TimeZone!) -> Date {
+  fileprivate static func combineDateTimeTimezone(_ date: Date?, time: Date?, timezone: TimeZone?) -> Date {
     
     var calendar = Calendar.current
     calendar.timeZone = TimeZone(secondsFromGMT: 0)!
 
     var mergedComponents = DateComponents()
 
-    if date != nil {
+    if let date = date {
       let dateComponents = (calendar as NSCalendar).components([.year, .month, .day], from: date)
 
       mergedComponents.year = dateComponents.year
@@ -125,7 +127,7 @@ public extension Date {
       mergedComponents.day = dateComponents.day
     }
 
-    if time != nil {
+    if let time = time {
       let timeComponents = (calendar as NSCalendar).components([.hour, .minute, .second, .nanosecond], from: time)
 
       mergedComponents.hour = timeComponents.hour
@@ -135,15 +137,15 @@ public extension Date {
 
     }
 
-    if timezone != nil {
+    if let timezone = timezone {
       mergedComponents.timeZone = timezone
     }
 
     return calendar.date(from: mergedComponents)!
   }
 
-  fileprivate static func dateWeekWithSTring(_ dateWeekString: String) -> Date! {
-    
+  fileprivate static func dateWeekWithSTring(_ dateWeekString: String) -> Date? {
+
     // Week of the year e.g. 2016-W03
     if let _ = dateWeekString.range(of: ISO8601Constants.WeekOfTheYearRegexp, options: .regularExpression) {
       let dateWeekStringWithoutDashes = dateWeekString.replacingOccurrences(of: "-", with: "")
@@ -163,7 +165,7 @@ public extension Date {
     return nil
   }
   
-  fileprivate static func dateWithString(_ dateString: String) -> Date! {
+  fileprivate static func dateWithString(_ dateString: String) -> Date? {
     
     // Calender month e.g. 2016-01
     if let _ = dateString.range(of: ISO8601Constants.CalendarMonthRegexp, options: .regularExpression) {
@@ -184,7 +186,7 @@ public extension Date {
     return nil
   }
   
-  fileprivate static func timeWithString(_ timeString: String) -> Date! {
+  fileprivate static func timeWithString(_ timeString: String) -> Date? {
 
     // Hours and minutes e.g. 10:10:34
     if let _ = timeString.range(of: ISO8601Constants.HoursMinutesSecondsRegexp, options: .regularExpression) {
