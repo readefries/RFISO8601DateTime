@@ -1,4 +1,3 @@
-
 import Foundation
 
 public extension Date {
@@ -10,6 +9,23 @@ public extension Date {
     var timeZone: TimeZone! = nil
     
     // Date and time
+
+    // Date and time, with fractional seconds and time zone
+    if let _ = dateTimeString.range(of: ISO8601Constants.DateTimeWithFractionalSecondsAndTimeZoneRegexp, options: .regularExpression) {
+      if let dateRange = dateTimeString.range(of: ISO8601Constants.DateWithTimeZoneRegexp, options: .regularExpression) {
+        date = dateWithString(dateTimeString.substring(with: dateRange))
+      }
+
+      if let timeRange = dateTimeString.range(of: ISO8601Constants.TimeWithFractionalSecondsRegexp, options: .regularExpression) {
+        time = timeWithString(dateTimeString.substring(with: timeRange))
+      }
+
+      if let timezoneRange = dateTimeString.range(of: ISO8601Constants.TimeZoneDesignatorRegexp, options: .regularExpression) {
+        timeZone = TimeZone.timeZoneWithString(dateTimeString.substring(with: timezoneRange))
+      }
+
+      return combineDateTimeTimezone(date, time: time, timezone: timeZone)
+    }
     
     // Calendar date with hours, minutes, and seconds (e.g., 2008-08-30 17:21:59 or 20080830 172159).
     if let _ = dateTimeString.range(of: ISO8601Constants.CalenderDateHoursMinutesSecondsRegexp, options: .regularExpression) {
@@ -23,28 +39,7 @@ public extension Date {
       
       return combineDateTime(date, time: time)
     }
-    
-    // Date and time, with fractional seconds and time zone
-    if let _ = dateTimeString.range(of: ISO8601Constants.DateTimeWithFractionalSecondsAndTimeZoneRegexp, options: .regularExpression) {
-      if let dateRange = dateTimeString.range(of: ISO8601Constants.DateWithTimeZoneRegexp, options: .regularExpression) {
-        date = dateWithString(dateTimeString.substring(with: dateRange))
-      }
-      
-      if let timeRange = dateTimeString.range(of: ISO8601Constants.TimeWithFractionalSecondsRegexp, options: .regularExpression) {
-        time = timeWithString(dateTimeString.substring(with: timeRange))
-      }
-      
-      if let timezoneRange = dateTimeString.range(of: ISO8601Constants.TimeZoneDesignatorRegexp, options: .regularExpression) {
-        timeZone = TimeZone.timeZoneWithString(dateTimeString.substring(with: timezoneRange))
-      }
-      
-//      if timeZone == TimeZone(secondsFromGMT: 0) {
-//        return combineDateTime(date, time: time)
-//      }
 
-      return combineDateTimeTimezone(date, time: time, timezone: timeZone)
-    }
-    
     // RFC2822 Date
     if let _ = dateTimeString.range(of: ISO8601Constants.DateTimeRFC2822Regexp, options: .regularExpression) {
       ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.DateTimeRFC2822Format
@@ -190,7 +185,15 @@ public extension Date {
   }
   
   fileprivate static func timeWithString(_ timeString: String) -> Date! {
-    
+
+    // Hours and minutes e.g. 10:10:34
+    if let _ = timeString.range(of: ISO8601Constants.HoursMinutesSecondsRegexp, options: .regularExpression) {
+      let timeStringWithoutDashes = timeString.replacingOccurrences(of: ":", with: "")
+      ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.HoursMinutesSecondsFormat
+
+      return ISO8601Constants.dateFormatter.date(from: timeStringWithoutDashes)!
+    }
+
     // Hours and minutes e.g. 10:10
     if let _ = timeString.range(of: ISO8601Constants.HoursMinutesRegexp, options: .regularExpression) {
       let timeStringWithoutDashes = timeString.replacingOccurrences(of: ":", with: "")
@@ -198,15 +201,7 @@ public extension Date {
       
       return ISO8601Constants.dateFormatter.date(from: timeStringWithoutDashes)!
     }
-    
-    // Hours and minutes e.g. 10:10:34
-    if let _ = timeString.range(of: ISO8601Constants.HoursMinutesSecondsRegexp, options: .regularExpression) {
-      let timeStringWithoutDashes = timeString.replacingOccurrences(of: ":", with: "")
-      ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.HoursMinutesSecondsFormat
-      
-      return ISO8601Constants.dateFormatter.date(from: timeStringWithoutDashes)!
-    }
-    
+
     // Time, with fractional seconds (e.g. 01:45:36.123).
     if let _ = timeString.range(of: ISO8601Constants.TimeWithFractionalSecondsRegexp, options: .regularExpression) {
       ISO8601Constants.dateFormatter.dateFormat = ISO8601Constants.TimeWithFractionalSecondsFormat

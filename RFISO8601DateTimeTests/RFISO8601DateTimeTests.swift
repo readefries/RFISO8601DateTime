@@ -180,6 +180,25 @@ class ISO8601DateTimeTests: XCTestCase {
       XCTAssertTrue(parsedTimeZoneDesignatorWithoutMinutes == TimeZone(secondsFromGMT: (3600 * -7)), String(format: "Timezone should be -7:00, not %@", parsedTimeZoneDesignatorWithoutMinutes as CVarArg))
     }
   }
+
+  func testDateTime() {
+    let dateTime = "2016-10-18 11:58:00"
+
+    if let parsedDateTime = Date.parseDateString(dateTime) {
+      var calendar = Calendar.current
+      calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+
+      let components = (calendar as NSCalendar).components([.year, .month, .day, .hour, .minute, .second, .nanosecond, .timeZone], from: parsedDateTime)
+
+      XCTAssertTrue(components.year == 2016, String(format: "The year should be 1985, not %d", components.year!))
+      XCTAssertTrue(components.month == 10, String(format: "The month should be 4, not %d", components.month!))
+      XCTAssertTrue(components.day == 18, String(format: "The day should be 12, not %d", components.day!))
+      XCTAssertTrue(components.hour == 11, String(format: "The hour should be 23, not %d", components.hour!))
+      XCTAssertTrue(components.minute == 58, String(format: "The minute should be 20, not %d", components.minute!))
+      XCTAssertTrue(components.second == 00, String(format: "The seconde should be 50, not %d", components.second!))
+    }
+  }
+
   
   func testRFC3339DateTime() {
     let dateTime = "1985-04-12T23:20:50.52Z"
