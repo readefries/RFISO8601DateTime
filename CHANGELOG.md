@@ -1,3 +1,7 @@
+# 2.0.1
+
+* Fixed issue which would cause crashes for certain date formats
+
 # 2.0.0
 
 * Upgrade to Swift 3.0
