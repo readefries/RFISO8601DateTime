@@ -8,21 +8,20 @@ public extension TimeZone {
     var timeZoneString: String!
     
     if let rangeOfTimezone = dateString.range(of: ISO8601Constants.TimeZoneDesignatorRegexp, options: .regularExpression) {
-      timeZoneString = dateString.substring(with: rangeOfTimezone)
-      
+      timeZoneString = String(dateString[rangeOfTimezone.lowerBound..<rangeOfTimezone.upperBound])
+
       if timeZoneString == "Z" {
         return TimeZone(secondsFromGMT: 0)
       }
       
       if let _ = timeZoneString.range(of: ISO8601Constants.TimeZoneDesignatorRegexp, options: .regularExpression) {
         timeZoneString = timeZoneString.replacingOccurrences(of: ":", with: "")
-        let string = timeZoneString as NSString
+
+        let hoursString = String(timeZoneString[timeZoneString.index(timeZoneString.startIndex, offsetBy: 1)..<timeZoneString.index(timeZoneString.startIndex, offsetBy: 3)])
+        var minutesString: String! = nil
         
-        let hoursString = string.substring(with: NSRange(location: 1,length: 2))
-        var minutesString: NSString! = nil
-        
-        if string.length == 5 {
-          minutesString = string.substring(with: NSRange(location: 3,length: 2)) as NSString!
+        if timeZoneString.count == 5 {
+          minutesString = String(timeZoneString[timeZoneString.index(timeZoneString.startIndex, offsetBy: 3)..<timeZoneString.index(timeZoneString.startIndex, offsetBy: 5)])
         }
         
         let formatter = NumberFormatter()
@@ -31,8 +30,8 @@ public extension TimeZone {
         let minutes = minutesString == nil ? (0) : formatter.number(from: minutesString as String)
         
         var seconds = ((hours?.intValue)! * 3600) + ((minutes?.intValue)! * 60)
-        
-        if timeZoneString.characters.index(of: "\u{2d}") != nil {
+
+        if timeZoneString.index(of: "\u{2d}") != nil {
           seconds = seconds * -1
         }
         
