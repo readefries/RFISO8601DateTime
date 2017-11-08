@@ -1,3 +1,7 @@
+# 3.0.0
+
+* Updated sources for Xcode 9 and Swift 4
+
 # 2.0.2
 
 * Removed a lot of force unwraps, and replaced them with if let/guard lets to prevent possible crashes
