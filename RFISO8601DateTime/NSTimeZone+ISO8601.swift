@@ -17,11 +17,11 @@ public extension TimeZone {
       if let _ = timeZoneString.range(of: ISO8601Constants.TimeZoneDesignatorRegexp, options: .regularExpression) {
         timeZoneString = timeZoneString.replacingOccurrences(of: ":", with: "")
 
-        let hoursString = String(timeZoneString[timeZoneString.index(timeZoneString.startIndex, offsetBy: 1)..<timeZoneString.index(timeZoneString.startIndex, offsetBy: 3)])
+        let hoursString = "\(timeZoneString[timeZoneString.index(timeZoneString.startIndex, offsetBy: 1)..<timeZoneString.index(timeZoneString.startIndex, offsetBy: 3)])"
         var minutesString: String! = nil
         
         if timeZoneString.count == 5 {
-          minutesString = String(timeZoneString[timeZoneString.index(timeZoneString.startIndex, offsetBy: 3)..<timeZoneString.index(timeZoneString.startIndex, offsetBy: 5)])
+          minutesString = "\(timeZoneString[timeZoneString.index(timeZoneString.startIndex, offsetBy: 3)..<timeZoneString.index(timeZoneString.startIndex, offsetBy: 5)])"
         }
         
         let formatter = NumberFormatter()

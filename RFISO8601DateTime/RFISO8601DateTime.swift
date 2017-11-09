@@ -48,7 +48,7 @@ struct ISO8601Constants {
   static let DateTimeRFC2822Regexp = "^(?:(Sun|Mon|Tue|Wed|Thu|Fri|Sat),\\s+)?(0[1-9]|[1-2]?[0-9]|3[01])\\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s+(19[0-9]{2}|[2-9][0-9]{3})\\s+(2[0-3]|[0-1][0-9]):([0-5][0-9])(?::(60|[0-5][0-9]))?\\s+([-\\+][0-9]{2}[0-5][0-9]|(?:UT|GMT|(?:E|C|M|P)(?:ST|DT)|[A-IK-Z]))(\\s+|\\(([^\\(\\)]+|\\\\\\(|\\\\\\))*\\))*$"
   static let DateTimeRFC2822Format = "EEE', 'dd' 'MMM' 'yyyy' 'HH':'mm':'ss' 'Z"
   
-  static var dateFormatter: DateFormatter = {
+  static let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.locale = Locale(identifier: "en_US_POSIX")
     formatter.timeZone = TimeZone(secondsFromGMT: 0)

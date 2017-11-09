@@ -13,15 +13,15 @@ public extension Date {
     // Date and time, with fractional seconds and time zone
     if let _ = dateTimeString.range(of: ISO8601Constants.DateTimeWithFractionalSecondsAndTimeZoneRegexp, options: .regularExpression) {
       if let dateRange = dateTimeString.range(of: ISO8601Constants.DateWithTimeZoneRegexp, options: .regularExpression) {
-        date = dateWithString(String(dateTimeString[dateRange.lowerBound..<dateRange.upperBound]))
+        date = dateWithString("\(dateTimeString[dateRange])")
       }
 
       if let timeRange = dateTimeString.range(of: ISO8601Constants.TimeWithFractionalSecondsRegexp, options: .regularExpression) {
-        time = timeWithString(String(dateTimeString[timeRange.lowerBound..<timeRange.upperBound]))
+        time = timeWithString("\(dateTimeString[timeRange])")
       }
 
       if let timezoneRange = dateTimeString.range(of: ISO8601Constants.TimeZoneDesignatorRegexp, options: .regularExpression) {
-        timeZone = TimeZone.timeZoneWithString(String(dateTimeString[timezoneRange.lowerBound..<timezoneRange.upperBound]))
+        timeZone = TimeZone.timeZoneWithString("\(dateTimeString[timezoneRange])")
       }
 
       return combineDateTimeTimezone(date, time: time, timezone: timeZone)
@@ -30,11 +30,11 @@ public extension Date {
     // Calendar date with hours, minutes, and seconds (e.g., 2008-08-30 17:21:59 or 20080830 172159).
     if let _ = dateTimeString.range(of: ISO8601Constants.CalenderDateHoursMinutesSecondsRegexp, options: .regularExpression) {
       if let dateRange = dateTimeString.range(of: ISO8601Constants.CalendarDateRegexp, options: .regularExpression) {
-        date = dateWithString(String(dateTimeString[dateRange.lowerBound..<dateRange.upperBound]))
+        date = dateWithString("\(dateTimeString[dateRange])")
       }
       
       if let timeRange = dateTimeString.range(of: ISO8601Constants.HoursMinutesSecondsRegexp, options: .regularExpression) {
-        time = timeWithString(String(dateTimeString[timeRange.lowerBound..<timeRange.upperBound]))
+        time = timeWithString("\(dateTimeString[timeRange])")
       }
 
       guard let date = date, let time = time else { return nil }
@@ -50,7 +50,7 @@ public extension Date {
     }
     
     if let range = dateTimeString.range(of: ISO8601Constants.WeekDateRegexp, options: .regularExpression) {
-      return dateWeekWithSTring(String(dateTimeString[range.lowerBound..<range.upperBound]))
+      return dateWeekWithSTring("\(dateTimeString[range])")
     }
       // Ordinal date e.g. 2016-021
     else  if let _ = dateTimeString.range(of: ISO8601Constants.OrdinalDateRegexp, options: .regularExpression) {
@@ -61,15 +61,15 @@ public extension Date {
     }
     
     if let dateRange = dateTimeString.range(of: ISO8601Constants.DateWithTimeZoneRegexp, options: .regularExpression) {
-      date = dateWithString(String(dateTimeString[dateRange.lowerBound..<dateRange.upperBound]))
+      date = dateWithString("\(dateTimeString[dateRange])")
     }
     
     if let timeRange = dateTimeString.range(of: ISO8601Constants.TimeWithFractionalSecondsRegexp, options: .regularExpression) {
-      time = timeWithString(String(dateTimeString[timeRange.lowerBound..<timeRange.upperBound]))
+      time = timeWithString("\(dateTimeString[timeRange])")
     }
     
     if let timezoneRange = dateTimeString.range(of: ISO8601Constants.TimeZoneDesignatorRegexp, options: .regularExpression) {
-      timeZone = TimeZone.timeZoneWithString(String(dateTimeString[timezoneRange.lowerBound..<timezoneRange.upperBound]))
+      timeZone = TimeZone.timeZoneWithString("\(dateTimeString[timezoneRange])")
     }
     
     // Only try to parse week, if now date and time has been found
