@@ -1,11 +1,13 @@
 language: objective-c
-osx_image: xcode9
+osx_image: xcode10.1
 cache:
 - bundler
 script:
 - xcodebuild test -project RFISO8601DateTime.xcodeproj -scheme RFISO8601DateTimeTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination 'platform=iOS Simulator,name=iPhone 7'
 - bundle exec pod lib lint --quick
 before_install:
+- gem install -v 2.0.1 bundler
+- bundle _2.0.1_ install
 - brew update
 - brew outdated carthage || brew upgrade carthage
 before_deploy:
