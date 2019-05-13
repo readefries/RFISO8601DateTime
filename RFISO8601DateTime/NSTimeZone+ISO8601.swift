@@ -3,7 +3,7 @@ import Foundation
 
 public extension TimeZone {
   // Time zone designator e.g., Z, +01 or +01:00
-  public static func timeZoneWithString(_ dateString: String) -> TimeZone! {
+  static func timeZoneWithString(_ dateString: String) -> TimeZone! {
     
     var timeZoneString: String!
     
@@ -31,7 +31,7 @@ public extension TimeZone {
         
         var seconds = ((hours?.intValue)! * 3600) + ((minutes?.intValue)! * 60)
 
-        if timeZoneString.index(of: "\u{2d}") != nil {
+        if timeZoneString.firstIndex(of: "\u{2d}") != nil {
           seconds = seconds * -1
         }
         

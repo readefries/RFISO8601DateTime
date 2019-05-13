@@ -1,3 +1,7 @@
+# 3.0.3
+
+* Updated sources for Xcode 10 and Swift 5
+
 # 3.0.0
 
 * Updated sources for Xcode 9 and Swift 4
