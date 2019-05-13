@@ -2,7 +2,7 @@ import Foundation
 
 public extension Date {
   
-  public static func parseDateString(_ dateTimeString: String) -> Date? {
+  static func parseDateString(_ dateTimeString: String) -> Date? {
 
     var date: Date? = nil
     var time: Date? = nil
