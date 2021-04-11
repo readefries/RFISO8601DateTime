@@ -17,7 +17,6 @@
 		B14A56101C577E8C005201FE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B14A560F1C577E8C005201FE /* .gitignore */; };
 		B14A56141C577EE0005201FE /* RFISO8601DateTime.podspec in Resources */ = {isa = PBXBuildFile; fileRef = B14A56111C577EE0005201FE /* RFISO8601DateTime.podspec */; };
 		B14A56161C577EE0005201FE /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B14A56131C577EE0005201FE /* LICENSE */; };
-		B14A56181C577EF8005201FE /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = B14A56171C577EF8005201FE /* .travis.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +44,6 @@
 		B14A56111C577EE0005201FE /* RFISO8601DateTime.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RFISO8601DateTime.podspec; sourceTree = "<group>"; };
 		B14A56121C577EE0005201FE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B14A56131C577EE0005201FE /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		B14A56171C577EF8005201FE /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		B1A3FED51DDCE78000DA5D69 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				B14A560F1C577E8C005201FE /* .gitignore */,
-				B14A56171C577EF8005201FE /* .travis.yml */,
 				B1A3FED51DDCE78000DA5D69 /* CHANGELOG.md */,
 				B14A56121C577EE0005201FE /* README.md */,
 				B14A56111C577EE0005201FE /* RFISO8601DateTime.podspec */,
@@ -210,7 +207,6 @@
 			files = (
 				B14A56161C577EE0005201FE /* LICENSE in Resources */,
 				B14A56141C577EE0005201FE /* RFISO8601DateTime.podspec in Resources */,
-				B14A56181C577EF8005201FE /* .travis.yml in Resources */,
 				B14A56101C577E8C005201FE /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
