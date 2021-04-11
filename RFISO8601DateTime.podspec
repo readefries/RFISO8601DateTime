@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/readefries/RFISO8601DateTime.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/readefries'
 
-  s.platform     = :ios, '8.0'
+  s.ios.deployment_target = '9.0'
   s.requires_arc = true
 
   s.source_files = 'RFISO8601DateTime/**/*.swift'
