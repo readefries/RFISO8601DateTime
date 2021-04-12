@@ -53,7 +53,7 @@ pod 'RFISO8601DateTime', '~> 1.0' # Swift 2.3
 
 ## Author
 
-Hindrik Bruinsma, de@readefries.nl
+Hindrik Bruinsma, hbruinsma@xs4some.nl
 
 ## License
 
