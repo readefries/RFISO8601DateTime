@@ -1,6 +1,6 @@
 # RFISO8601DateTime
 
-[![CI Status](http://img.shields.io/travis/readefries/RFISO8601DateTime.svg?style=flat)](https://travis-ci.org/readefries/RFISO8601DateTime)
+[![Unit tests](https://github.com/readefries/RFISO8601DateTime/actions/workflows/check-pr.yml/badge.svg)](https://github.com/readefries/RFISO8601DateTime/actions/workflows/check-pr.yml)
 [![Version](https://img.shields.io/cocoapods/v/RFISO8601DateTime.svg?style=flat)](http://cocoapods.org/pods/RFISO8601DateTime)
 [![License](https://img.shields.io/cocoapods/l/RFISO8601DateTime.svg?style=flat)](http://cocoapods.org/pods/RFISO8601DateTime)
 [![Platform](https://img.shields.io/cocoapods/p/RFISO8601DateTime.svg?style=flat)](http://cocoapods.org/pods/RFISO8601DateTime)
@@ -53,7 +53,7 @@ pod 'RFISO8601DateTime', '~> 1.0' # Swift 2.3
 
 ## Author
 
-Hindrik Bruinsma, de@readefries.nl
+Hindrik Bruinsma, hbruinsma@xs4some.nl
 
 ## License
 
