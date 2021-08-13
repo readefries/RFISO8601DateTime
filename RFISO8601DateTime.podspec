@@ -8,8 +8,9 @@
 
 Pod::Spec.new do |s|
   s.name             = "RFISO8601DateTime"
-  s.version          = "3.0.3"
+  s.version          = "<LIB_VERSION>"
   s.summary          = "A library to easily use ISO8601 date and time."
+  s.swift_version    = "5.0"
   s.description      = <<-DESC 
   			A small library that can automatically parse ISO8601/RFC3339/RFC2822 date
   			and time. It extends NSDate and recognise different date and time formats using regular expression.
@@ -22,7 +23,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/readefries/RFISO8601DateTime.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/readefries'
 
-  s.platform     = :ios, '8.0'
+  s.ios.deployment_target = '9.0'
   s.requires_arc = true
 
   s.source_files = 'RFISO8601DateTime/**/*.swift'
